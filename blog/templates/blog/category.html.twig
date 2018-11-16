@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}category{% endblock %}
+
+{% block stylesheets %}{% endblock %}
+
+{% block body %}
+
+    <h1>Article(s) from {{ category.name }}</h1>
+    {% for  article in articles %}
+    <div>
+        <p>{{ article.id }} / {{ article.title }} / {{ article.content }} </p>
+    </div>
+    {% endfor %}
+    <a href="{{ path('blog_index') }}">
+        back to homepage.
+    </a>
+
+{% endblock %}

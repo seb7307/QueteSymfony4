@@ -41,7 +41,7 @@ class BlogController extends AbstractController
     /**
      * @param string $slug The slugger
      *
-     * @Route("/{slug<^[a-z0-9-]+$>}",
+     * @Route("t/{slug<^[a-z0-9-]+$>}",
      *     defaults={"slug"=null},
      *     name="blog_show"),
      * @return Response A response instance
@@ -62,7 +62,7 @@ class BlogController extends AbstractController
 
         if (!$article){
             throw $this->createNotFoundException(
-                'No article with' .$slug. 'title, found in article\'s table'
+                'No article with' .$slug. 'title, found in article \'s table'
             );
         }
 

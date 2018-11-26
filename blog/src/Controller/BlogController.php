@@ -8,8 +8,7 @@
 
 namespace App\Controller;
 
-
-use App\Form\ArticleSearchType;
+use App\Form\ArticleType;
 use App\Form\CategoryType;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,16 +21,17 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class BlogController extends AbstractController
 {
-    /**
+     /**
      * @Route("/blog", name="blog_index")
      * @return Response A response instance
      */
     public function index (Request $request, ObjectManager $manager) : Response
     {
-        $category = new Category();
-        $form = $this->createForm(CategoryType::class, $category);
 
+        $form = $this->createForm(ArticleType::class,
+            null);
         $form->handleRequest($request);
+
         if ($form->isSubmitted()) {
             $manager->persist($category);
             $manager->flush();
@@ -47,10 +47,9 @@ class BlogController extends AbstractController
         }
         return $this->render(
             'blog/index.html.twig',[
-                'articles' => $articles,
-                'form' => $form->createView(),
-            ]
-        );
+                  'articles' => $articles,
+                  'form' => $form->createView(),
+       ]);
     }
 
     /**

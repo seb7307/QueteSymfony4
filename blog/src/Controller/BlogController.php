@@ -88,7 +88,7 @@ class BlogController extends AbstractController
 
     /**
      * @param string $category
-     * @Route("/category/{category}", name="blog_show_category").
+     * @Route("/a/category/{category}", name="blog_show_category").
      * @return Response
      */
 
